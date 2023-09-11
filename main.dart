@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'main2.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -31,6 +33,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      routes: {
+        "/main2" :(context) => Main2Page(),
+      },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -116,12 +121,12 @@ Row(
   children: <Widget>[
     GestureDetector(
       onTap: (){
-        print("masuk1");
+        Navigator.pushNamed(context, "/main2");
       },
       child: Container(
         width: 150.0,
         height: 100.0,
-        color: Colors.red,
+        color: Colors.pinkAccent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
@@ -161,7 +166,7 @@ Row(
       child: Container(
         width: 150.0,
         height: 100.0,
-        color: Colors.blue,
+        color: Colors.lightBlueAccent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
@@ -178,7 +183,7 @@ Row(
       child: Container(
         width: 150.0,
         height: 100.0,
-        color: Colors.yellow,
+        color: Colors.purpleAccent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
