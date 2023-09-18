@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:untitled/Home_Controller.dart';
 import 'package:get/get.dart';
 
-class InDecScreen extends StatelessWidget {
-  const InDecScreen({super.key});
+class indexScreen extends StatelessWidget {
+  const indexScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

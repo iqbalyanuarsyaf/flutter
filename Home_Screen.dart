@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/Home_Controller.dart';
-import 'package:untitled/Second_Screen.dart';
-
-void main() => runApp(homeScreen());
 
 class homeScreen extends StatelessWidget {
   const homeScreen({super.key});
@@ -12,22 +9,20 @@ class homeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     homeController hc = Get.put(homeController());
     return Scaffold(
-      appBar : AppBar(
-        title: Text('Home Screen'),
+      appBar: AppBar(
+        title: Text('Home'),
         actions: [
           IconButton(
               onPressed: () {
                 Get.bottomSheet(Container(
-                  padding: EdgeInsets.all(10),
-                  color: Colors.grey,
+                  color: Colors.white,
                   width: 100,
                   height: 100,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextButton(
                           onPressed: () {
-                            Get.toNamed('/indexScreen');
+                            Get.toNamed('/indec');
                           },
                           child: Text('Increase/Decrease')),
                       SizedBox(
@@ -35,58 +30,63 @@ class homeScreen extends StatelessWidget {
                       ),
                       TextButton(
                           onPressed: () {
-                            Get.toNamed('/listScreen');
+                            Get.toNamed('/listsc');
                           },
-                          child: Text('List Screen')),
+                          child: Text('List Screen'))
                     ],
                   ),
                 ));
-          }, icon: Icon(Icons.edit_note_outlined))
+              },
+              icon: Icon(Icons.edit_note_outlined))
         ],
       ),
-      body:Column(
-        children: [
-          Container(
-              child: TextField(
-                controller: hc.dek,
-                style: TextStyle(
-
-                ),
-                decoration: InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Input Nama',
-                ),
-                onSubmitted: (value) {
-                  // hc.ChangeName(hc.dek);
-                  // Get.defaultDialog(
-                  //   title: 'ini adalah judul',
-                  //   middleText: isi.dek.text,
-                  //   onConfirm: (){
-                  //     Get.to(secondScreen(), arguments: isi.dek.text );
-                  //   }
-                  // );
-                },
+      body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Column(
+          children: [
+            TextField(
+              controller: hc.dek,
+              decoration: InputDecoration(
+                hintText: "Nama Anda",
+                labelText: "Nama",
               ),
+              onSubmitted: (value) {
+                hc.gantiNilai(hc.dek.text);
+                // Get.defaultDialog(
+                //     title: "Nama yang diinput",
+                //     middleText: hc.namacontroller.text,`
+                //     onConfirm: () {
+                //       Get.to(SecondScreen(), arguments: hc.namacontroller.text);
+                //     });
+                Get.snackbar(
+                    'nilai dari variabel nama adalah:', hc.dek.text,
+                    snackPosition: SnackPosition.TOP,
+                    duration: Duration(seconds: 3));
+              },
             ),
-          // Obx(() => Text(hc.nama.value)),
-          GetBuilder<homeController>(builder: (hc){
-            return Text(hc.nama);
-          }),
-          Obx(() => Row(
-            children: [
-              Switch(
-                value: hc.isOpen.value,
-                activeColor: Colors.green,
-                inactiveThumbColor: Colors.red,
-                onChanged: (value){
-                  hc.setIsOpen(value);
-                }),
-              Text(hc.isOpen.value ? 'open' : 'close'),
-            ],
-          ))
-        ],
+            SizedBox(
+              height: 10,
+            ),
+            // Obx(() => Text(hc.nama.value)),
+            GetBuilder<homeController>(builder: (hc) {
+              return Text(hc.nama);
+            }),
+            Obx(() => Row(
+              children: [
+                Text(hc.isOpen.value ? 'Open' : 'Close'),
+                Spacer(),
+                Switch(
+                    value: hc.isOpen.value,
+                    inactiveThumbColor: Colors.red,
+                    activeColor: Colors.green,
+                    onChanged: (value) {
+                      hc.setIsOpen(value);
+                    }),
+              ],
+            ))
+          ],
+        ),
       ),
-      );
+    );
   }
 }
-
