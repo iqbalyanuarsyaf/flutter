@@ -15,9 +15,33 @@ class homeScreen extends StatelessWidget {
       appBar : AppBar(
         title: Text('Home Screen'),
         actions: [
-          IconButton(onPressed: () {
-
-          }, icon: )
+          IconButton(
+              onPressed: () {
+                Get.bottomSheet(Container(
+                  padding: EdgeInsets.all(10),
+                  color: Colors.grey,
+                  width: 100,
+                  height: 100,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            Get.toNamed('/indexScreen');
+                          },
+                          child: Text('Increase/Decrease')),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Get.toNamed('/listScreen');
+                          },
+                          child: Text('List Screen')),
+                    ],
+                  ),
+                ));
+          }, icon: Icon(Icons.edit_note_outlined))
         ],
       ),
       body:Column(

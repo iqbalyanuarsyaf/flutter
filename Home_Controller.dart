@@ -7,7 +7,16 @@ class homeController extends GetxController{
   RxBool isOpen=RxBool(true);
   RxBool isClose=RxBool(false);
   String nama ='';
+  RxInt x = 0.obs;
   // RxString nama = RxString('');
+
+  void Increase(){
+    x.value++;
+  }
+
+  void Decrease(){
+    x.value--;
+  }
 
   void gantiNilai(String nm){
     nama=nm;
