@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/Home_Screen.dart';
+import 'package:untitled/add_matpel.dart';
 import 'package:untitled/list_screen.dart';
 import 'inDec_screen.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/", page: ()=>MyApp()),
         GetPage(name: "/indec", page: ()=>indexScreen()),
         GetPage(name: "/listsc", page: ()=>listScreen()),
+        GetPage(name: "/matpel", page: ()=>addMatpel()),
       ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
